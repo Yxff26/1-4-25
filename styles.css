@@ -1,0 +1,591 @@
+/* Estilos Generales */
+:root {
+    --retro-paper: #f5f1e6;
+    --retro-accent: #f0e6d2;
+    --retro-ink: #212121;
+    --border-color: #000;
+    --shadow-color: rgba(0, 0, 0, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--retro-paper);
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a19483' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    color: var(--retro-ink);
+    position: relative;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Patrones de Zigzag */
+.zigzag-top, .zigzag-bottom {
+    height: 24px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='10' viewBox='0 0 60 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0L5 5L10 0L15 5L20 0L25 5L30 0L35 5L40 0L45 5L50 0L55 5L60 0V10H0V0Z' fill='black'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    z-index: 10;
+}
+
+.zigzag-top {
+    top: 0;
+    transform: rotate(180deg);
+}
+
+.zigzag-bottom {
+    bottom: 0;
+}
+
+/* Animación de Intro */
+.intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--retro-paper);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.intro-content {
+    text-align: center;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: scaleIn 2s ease-in-out 0.5s forwards;
+}
+
+.intro-image {
+    border: 4px solid black;
+    padding: 8px;
+    background-color: white;
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.intro-image img {
+    max-width: 100%;
+    height: 45vh;
+    display: block;
+}
+
+.intro-text {
+    margin-top: 1.5rem;
+}
+
+.intro-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.intro-text p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Encabezado */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header-content {
+    display: inline-block;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    padding: 1.5rem 2rem;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+.subtitle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.line {
+    height: 1px;
+    background-color: var(--border-color);
+    flex-grow: 1;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+
+.date-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.heart {
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23e53e3e' stroke='%23e53e3e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.date {
+    margin: 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Tarjetas y Secciones */
+.card {
+    background-color: white;
+    border: 4px solid var(--border-color);
+    padding: 1.5rem;
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.grid-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Momentos Especiales */
+.moments-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.moment {
+    border: 2px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+.moment img {
+    width: 100%;
+    height: 50vh;
+    display: block;
+}
+
+.moment p {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Carta de Amor */
+.letter-content {
+    background-color: var(--retro-paper);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.letter-greeting {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.letter-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.letter-signature {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.letter-name {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Línea de Tiempo */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 120px;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.timeline-date {
+    min-width: 120px;
+    text-align: center;
+}
+
+.date-box {
+    display: inline-block;
+    border: 2px solid var(--border-color);
+    padding: 0.25rem 0.75rem;
+    font-weight: bold;
+    background-color: var(--retro-accent);
+}
+
+.timeline-content {
+    flex: 1;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.timeline-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    margin-bottom: 0.5rem;
+}
+
+/* NUEVA SECCIÓN: Reproductor de Música */
+.music-player {
+    background-color: var(--retro-accent);
+    border: 2px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 4px;
+}
+
+.player-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.song-cover {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--border-color);
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.song-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-details {
+    flex: 1;
+}
+
+.song-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.song-artist {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.control-btn {
+    background: none;
+    border: 2px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    background-color: var(--border-color);
+    color: white;
+}
+
+.play-btn {
+    width: 50px;
+    height: 50px;
+}
+
+.progress-container {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    height: 6px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    width: 0%;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.music-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* NUEVA SECCIÓN: Galería de Fotos */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    border: 2px solid var(--border-color);
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 80vh;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+/* Pie de Página */
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-content {
+    display: inline-block;
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.footer-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .timeline::before {
+        left: 80px;
+    }
+    
+    .timeline-date {
+        min-width: 80px;
+    }
+    
+    .date-box {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-image {
+        max-width: 90%;
+    }
+    
+    .intro-text h1 {
+        font-size: 2rem;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .moments-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        display: none;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+    }
+    
+    .timeline-date {
+        margin-bottom: 0.5rem;
+    }
+    
+    .timeline-content {
+        padding-left: 0;
+    }
+}
